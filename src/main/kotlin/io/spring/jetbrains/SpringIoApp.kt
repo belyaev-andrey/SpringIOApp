@@ -19,10 +19,13 @@ fun main(args: Array<String>) {
 @Configuration
 class BoothConfiguration {
 	@Bean
-	fun boothService(props: BoothProperties) =
-		BoothService("""
+	fun boothService(props: BoothProperties): BoothService {
+		return BoothService(
+			"""
 			Meet ${props.participant} at Spring IO ${props.year}!
-		""".trimIndent())
+		""".trimIndent()
+		)
+	}
 }
 
 @ConfigurationProperties(prefix = "io.spring")
